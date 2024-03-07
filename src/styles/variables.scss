@@ -1,0 +1,9 @@
+$mobile: 767px;
+$tablet: 1024px;
+$desktopSmall: 1366px;
+$mediaMobile: "screen and (max-width: #{$mobile})";
+$mediaTablet: "screen and (max-width: #{$tablet})";
+$mediaDesktopSmall: "screen and (max-width: #{$desktopSmall})";
+
+$fontFamily: "Inter", sans-serif;
+$bg: #131416;

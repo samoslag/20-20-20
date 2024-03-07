@@ -1,0 +1,81 @@
+/*
+* Global style settings
+*/
+
+:root {
+  --bg: #{$bg};
+}
+
+* {
+  outline: none !important;
+  font-family: $fontFamily;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    background-color: $bg;
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: lighten($bg, 15%);
+
+    &:hover {
+      background-color: lighten($bg, 25%);
+    }
+
+    &:active {
+      background-color: lighten($bg, 20%);
+    }
+  }
+
+  @media only #{$mediaTablet} {
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg) !important;
+  height: auto;
+  overflow-x: hidden;
+
+  &.overlayed {
+    overflow: hidden;
+  }
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  animation: app-appear 0.2s;
+  
+  @keyframes app-appear {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+main {
+  width: 100%;
+}
+
+[pointer] {
+  cursor: pointer;
+}
+
+button {
+  padding: 0;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
