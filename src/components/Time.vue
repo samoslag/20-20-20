@@ -87,12 +87,12 @@ const time = computed(() => {
     width: 29px;
     text-align: center;
     text-shadow: 0 1px 3px black;
-    transition: color, 0.125s;
+    transition: color, 0.1s;
   }
 
   &--paused {
     .time__char {
-      color: rgba(whitesmoke, 0.5);
+      color: rgba(whitesmoke, 0.475);
     }
   }
 }
