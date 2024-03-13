@@ -96,6 +96,9 @@ watchEffect(() => {
 })
 
 onFinish(() => {
+  const notify = new Audio('audio/notify.mp3')
+  notify.play()
+
   if (active.value === 'first') {
     setSecondTimer()
   }
