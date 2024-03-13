@@ -4,6 +4,7 @@
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
+        :paused="!isCounting"
       />
     </Ring>
 
