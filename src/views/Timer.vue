@@ -84,9 +84,15 @@ const isInProgress = computed(() => duration.value !== timer.value)
 const isOver = computed(() => !isCounting.value && active.value === 'second' && timer.value === 0)
 
 watchEffect(() => {
-  const min = format(time.value.minutes)
-  const s = format(time.value.seconds)
-  document.title = `${min}:${s} | 20-20-20`
+  let title = '20-20-20'
+
+  if (isCounting.value) {
+    const min = format(time.value.minutes)
+    const s = format(time.value.seconds)
+    title = `${min}:${s} | 20-20-20`
+  }
+
+  document.title = title
 })
 
 onFinish(() => {
