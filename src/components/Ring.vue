@@ -49,13 +49,6 @@ const props = defineProps<Props>()
     height: calc(100% - #{$offset * 2});
     background: conic-gradient($gradient);
     border-radius: 50%;
-    animation: rotate 20s linear infinite;
-
-    @keyframes rotate {
-      to {
-        transform: rotate(360deg);
-      }
-    }
   }
 
   &::after {
