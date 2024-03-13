@@ -8,7 +8,10 @@
 
 * {
   outline: none !important;
-  font-family: $fontFamily;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
   box-sizing: border-box;
 
   &::-webkit-scrollbar {
