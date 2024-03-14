@@ -82,10 +82,14 @@ const time = computed(() => ({
   seconds: Math.ceil(timer.value / 1000) % 60
 }))
 
-const progress = computed(() => timer.value * 100 / duration.value)
 const isInProgress = computed(() => duration.value !== timer.value)
 const isOver = computed(() => !isCounting.value && stage.value === 'second' && timer.value === 0)
 const showResetBtn = computed(() => !isCounting.value && (isInProgress.value || stage.value === 'second'))
+const progress = computed(() => {
+  if (!isInProgress.value && !isCounting.value) return 0
+  const pct = timer.value * 100 / duration.value
+  return Math.min(100, Math.max(pct, 0))
+})
 
 watchEffect(() => {
   let title = '20-20-20'
