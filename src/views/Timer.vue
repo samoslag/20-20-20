@@ -1,6 +1,9 @@
 <template>
   <div class="timer">
-    <Ring :progress="progress">
+    <Ring
+      :progress="progress"
+      :paused="!isCounting"
+    >
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
@@ -43,7 +46,7 @@ import { useTimer } from '@/composables/timer'
 import { computed, watchEffect, ref } from 'vue'
 import { format } from '@/helpers/time'
 
-const FIRST_TIMER_DURATION = 20 * 60 * 1000
+const FIRST_TIMER_DURATION = 20 * 1000
 const SECOND_TIMER_DURATION = 20 * 1000
 
 const {
