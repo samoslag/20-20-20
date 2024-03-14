@@ -48,7 +48,7 @@ const emit = defineEmits<Emits>()
     0 ($shadowSize * -1) $shadowSize lighten($bg, 1.25%),
     0 2px 0 rgba(white, 0.04),
     0 $shadowSize $shadowSize darken($bg, 1.25%);
-    animation: button-appear 0.2s;
+  animation: button-appear 0.2s;
 
   @keyframes button-appear {
     from {

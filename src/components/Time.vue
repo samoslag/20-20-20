@@ -87,7 +87,7 @@ const time = computed(() => {
     width: 29px;
     text-align: center;
     text-shadow: 0 1px 3px black;
-    transition: color, 0.1s;
+    transition: color, 0.15s;
   }
 
   &--paused {

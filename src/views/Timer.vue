@@ -7,7 +7,7 @@
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
-        :is-paused="!isCounting"
+        :is-paused="progress !== 0 && !isCounting"
       />
     </Ring>
 
@@ -46,7 +46,7 @@ import { useTimer } from '@/composables/timer'
 import { computed, watchEffect, ref } from 'vue'
 import { format } from '@/helpers/time'
 
-const FIRST_TIMER_DURATION = 20 * 1000
+const FIRST_TIMER_DURATION = 20 * 60 * 1000
 const SECOND_TIMER_DURATION = 20 * 1000
 
 const {

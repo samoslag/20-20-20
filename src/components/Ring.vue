@@ -53,7 +53,7 @@ const props = defineProps<Props>()
     height: calc(100% - #{$offset * 2});
     background: conic-gradient($gradient);
     border-radius: 50%;
-    transition: opacity 0.1s;
+    transition: opacity 0.15s;
   }
 
   &::after {
@@ -106,7 +106,7 @@ const props = defineProps<Props>()
 
   &--paused {
     &::before {
-      opacity: 0.5;
+      opacity: 0.65;
     }
   }
 }
