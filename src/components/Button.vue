@@ -96,7 +96,7 @@ const emit = defineEmits<Emits>()
       transform: scale(0.95);
 
       .button__icon {
-        color: rgba(whitesmoke, 0.9);
+        color: rgba(whitesmoke, 0.6);
       }
     }
   }
