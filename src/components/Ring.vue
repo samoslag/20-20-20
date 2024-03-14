@@ -1,7 +1,7 @@
 <template>
   <div
     class="ring"
-    :class="{'ring--paused': props.paused}"
+    :class="{'ring--paused': props.isPaused}"
   >
     <div class="ring__progress" :style="`--progress: ${props.progress}%`">
       <div class="ring__outer">
@@ -18,7 +18,7 @@ import { defineProps } from 'vue'
 
 export interface Props {
   progress: number
-  paused: boolean
+  isPaused: boolean
 }
 
 const props = defineProps<Props>()

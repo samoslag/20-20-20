@@ -1,7 +1,7 @@
 <template>
   <div
     class="time"
-    :class="{'time--paused': paused}"
+    :class="{'time--paused': isPaused}"
   >
     <div
       v-if="time.minutes"
@@ -39,7 +39,7 @@ import { format } from '@/helpers/time'
 export interface Props {
   minutes?: number
   seconds?: number
-  paused: boolean
+  isPaused: boolean
 }
 
 const props = defineProps<Props>()

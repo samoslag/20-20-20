@@ -2,18 +2,18 @@
   <div class="timer">
     <Ring
       :progress="progress"
-      :paused="!isCounting"
+      :is-paused="!isCounting"
     >
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
-        :paused="!isCounting"
+        :is-paused="!isCounting"
       />
     </Ring>
 
     <div class="timer__controls">
       <Button
-        v-if="!isCounting && (isInProgress || active === 'second')"
+        v-if="showResetBtn"
         :icon="faRotateLeft"
         title="Reset"
         @click="setFirstTimer()"
@@ -63,16 +63,16 @@ const {
   updateInterval: 1000
 })
 
-const active = ref<'first' | 'second'>('first')
+const stage = ref<'first' | 'second'>('first')
 
 const setFirstTimer = () => {
-  active.value = 'first'
+  stage.value = 'first'
   setTimer(FIRST_TIMER_DURATION)
   setUpdateInterval(1000)
 }
 
 const setSecondTimer = () => {
-  active.value = 'second'
+  stage.value = 'second'
   setTimer(SECOND_TIMER_DURATION)
   setUpdateInterval(10)
 }
@@ -82,9 +82,10 @@ const time = computed(() => ({
   seconds: Math.ceil(timer.value / 1000) % 60
 }))
 
-const progress = computed(() => 100 - (timer.value * 100 / duration.value))
+const progress = computed(() => timer.value * 100 / duration.value)
 const isInProgress = computed(() => duration.value !== timer.value)
-const isOver = computed(() => !isCounting.value && active.value === 'second' && timer.value === 0)
+const isOver = computed(() => !isCounting.value && stage.value === 'second' && timer.value === 0)
+const showResetBtn = computed(() => !isCounting.value && (isInProgress.value || stage.value === 'second'))
 
 watchEffect(() => {
   let title = '20-20-20'
@@ -102,7 +103,7 @@ onFinish(() => {
   const notify = new Audio('audio/notify.mp3')
   notify.play()
 
-  if (active.value === 'first') {
+  if (stage.value === 'first') {
     setSecondTimer()
   }
 })
