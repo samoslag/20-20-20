@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ring"
-    :class="{'ring--paused': props.isPaused}"
-  >
+  <div class="ring">
     <div class="ring__progress" :style="`--progress: ${props.progress}%`">
       <div class="ring__outer">
         <div class="ring__inner">
@@ -18,7 +15,6 @@ import { defineProps } from 'vue'
 
 export interface Props {
   progress: number
-  isPaused: boolean
 }
 
 const props = defineProps<Props>()
@@ -30,7 +26,7 @@ const props = defineProps<Props>()
   $size: 330px;
   $shadowSize: 30px;
   $offset: 2px;
-  $stroke: 6px;
+  $stroke: 4px;
 
   width: $size;
   min-width: $size;
@@ -53,7 +49,6 @@ const props = defineProps<Props>()
     height: calc(100% - #{$offset * 2});
     background: conic-gradient($gradient);
     border-radius: 50%;
-    transition: opacity 0.15s;
   }
 
   &::after {
@@ -102,12 +97,6 @@ const props = defineProps<Props>()
       inset 0 2px 0 rgba(white, 0.04),
       0 2px 0 rgba(white, 0.04);
     background: lighten($bg, 1.25%);
-  }
-
-  &--paused {
-    &::before {
-      opacity: 0.65;
-    }
   }
 }
 </style>

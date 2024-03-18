@@ -1,13 +1,9 @@
 <template>
   <div class="timer">
-    <Ring
-      :progress="progress"
-      :is-paused="!isCounting"
-    >
+    <Ring :progress="progress">
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
-        :is-paused="progress !== 0 && !isCounting"
       />
     </Ring>
 
@@ -86,7 +82,6 @@ const isInProgress = computed(() => duration.value !== timer.value)
 const isOver = computed(() => !isCounting.value && stage.value === 'second' && timer.value === 0)
 const showResetBtn = computed(() => !isCounting.value && (isInProgress.value || stage.value === 'second'))
 const progress = computed(() => {
-  if (!isInProgress.value && !isCounting.value) return 0
   const pct = timer.value * 100 / duration.value
   return Math.min(100, Math.max(pct, 0))
 })

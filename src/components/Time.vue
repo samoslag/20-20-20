@@ -1,7 +1,9 @@
 <template>
   <div
     class="time"
-    :class="{'time--paused': isPaused}"
+    :class="{
+      'time--finished': hasFinished
+    }"
   >
     <div
       v-if="time.minutes"
@@ -39,7 +41,6 @@ import { format } from '@/helpers/time'
 export interface Props {
   minutes?: number
   seconds?: number
-  isPaused: boolean
 }
 
 const props = defineProps<Props>()
@@ -57,6 +58,8 @@ const time = computed(() => {
     seconds: format(props.seconds)
   }
 })
+
+const hasFinished = computed(() => !props.minutes && !props.seconds)
 
 </script>
 
@@ -87,12 +90,11 @@ const time = computed(() => {
     width: 29px;
     text-align: center;
     text-shadow: 0 1px 3px black;
-    transition: color, 0.15s;
   }
 
-  &--paused {
+  &--finished {
     .time__char {
-      color: rgba(whitesmoke, 0.475);
+      color: rgba(whitesmoke, 0.65);
     }
   }
 }

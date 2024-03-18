@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="button"
-    :class="{'button--small': props.small}"
-  >
+  <div class="button">
     <button
       class="button__btn"
       :title="props.title"
@@ -21,7 +18,6 @@ import { defineEmits, defineProps } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export interface Props {
-  small?: boolean
   title?: string
   icon: any
 }
@@ -41,7 +37,7 @@ const emit = defineEmits<Emits>()
   $shadowSize: 15px;
 
   background-color: black;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
   position: relative;
   box-shadow:
@@ -52,7 +48,7 @@ const emit = defineEmits<Emits>()
 
   @keyframes button-appear {
     from {
-      transform: scale(0.965);
+      transform: scale(0.975);
       opacity: 0.85;
     }
   }
@@ -93,7 +89,7 @@ const emit = defineEmits<Emits>()
 
     &:active {
       background: lighten($bg, 2%);
-      transform: scale(0.95);
+      transform: scale(0.955);
 
       .button__icon {
         color: rgba(whitesmoke, 0.6);
