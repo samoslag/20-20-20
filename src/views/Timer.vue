@@ -20,7 +20,7 @@
         :key="`start-btn-${isInProgress}`"
         :icon="faPlay"
         title="Start"
-        @click="start()"
+        @click="startTimer()"
       />
 
       <Button
@@ -42,7 +42,14 @@ import { useTimer } from '@/composables/timer'
 import { computed, watchEffect, ref } from 'vue'
 import { format } from '@/helpers/time'
 
-const FIRST_TIMER_DURATION = 20 * 60 * 1000
+const audio = new Audio('audio/notify.mp3')
+
+const notify = () => {
+  audio.currentTime = 0
+  audio.play()
+}
+
+const FIRST_TIMER_DURATION = 1 * 5 * 1000
 const SECOND_TIMER_DURATION = 20 * 1000
 
 const {
@@ -58,6 +65,16 @@ const {
   timer: FIRST_TIMER_DURATION,
   updateInterval: 1000
 })
+
+const startTimer = () => {
+  // mark our audio element as approved by the user
+  audio.play().then(() => { // pause directly
+    audio.pause()
+    audio.currentTime = 0
+  })
+
+  start()
+}
 
 const stage = ref<'first' | 'second'>('first')
 
@@ -99,8 +116,7 @@ watchEffect(() => {
 })
 
 onFinish(() => {
-  const notify = new Audio('audio/notify.mp3')
-  notify.play()
+  notify()
 
   if (stage.value === 'first') {
     setSecondTimer()
