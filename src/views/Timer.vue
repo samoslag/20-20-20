@@ -49,7 +49,7 @@ const notify = () => {
   audio.play()
 }
 
-const FIRST_TIMER_DURATION = 1 * 5 * 1000
+const FIRST_TIMER_DURATION = 20 * 60 * 1000
 const SECOND_TIMER_DURATION = 20 * 1000
 
 const {
