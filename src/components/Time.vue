@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="time"
-    :class="{
-      'time--finished': hasFinished
-    }"
-  >
+  <div class="time">
     <div
       v-if="time.minutes"
       class="time__value"
@@ -90,12 +85,6 @@ const hasFinished = computed(() => !props.minutes && !props.seconds)
     width: 29px;
     text-align: center;
     text-shadow: 0 1px 3px black;
-  }
-
-  &--finished {
-    .time__char {
-      color: rgba(whitesmoke, 0.65);
-    }
   }
 }
 </style>
