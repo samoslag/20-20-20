@@ -48,13 +48,14 @@ const time = computed(() => {
     }
   }
 
+  const minutes = String(props.minutes || '')
+  const seconds = minutes ? format(props.seconds) : String(props.seconds)
+
   return {
-    minutes: String(props.minutes || ''),
-    seconds: format(props.seconds)
+    minutes,
+    seconds
   }
 })
-
-const hasFinished = computed(() => !props.minutes && !props.seconds)
 
 </script>
 
