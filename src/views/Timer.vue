@@ -1,6 +1,10 @@
 <template>
   <div class="timer">
-    <Ring :progress="progress">
+    <Ring
+      :progress="progress"
+      :is-hidden="!isInProgress && !isCounting"
+      :is-faded="!isCounting"
+    >
       <Time
         :minutes="time.minutes"
         :seconds="time.seconds"
@@ -98,9 +102,10 @@ const time = computed(() => ({
 const isInProgress = computed(() => duration.value !== timer.value)
 const isOver = computed(() => !isCounting.value && stage.value === 'second' && timer.value === 0)
 const showResetBtn = computed(() => !isCounting.value && (isInProgress.value || stage.value === 'second'))
+
 const progress = computed(() => {
-  const pct = timer.value * 100 / duration.value
-  return Math.min(100, Math.max(pct, 0))
+  const pc = timer.value * 100 / duration.value
+  return Math.min(100, Math.max(pc, 0))
 })
 
 watchEffect(() => {

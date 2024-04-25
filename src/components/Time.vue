@@ -1,5 +1,10 @@
 <template>
-  <div class="time">
+  <div
+    class="time"
+    :class="{
+      'time--finished': hasFinished
+    }"
+  >
     <div
       v-if="time.minutes"
       class="time__value"
@@ -57,6 +62,8 @@ const time = computed(() => {
   }
 })
 
+const hasFinished = computed(() => props.minutes === 0 && props.seconds === 0)
+
 </script>
 
 <style lang="scss">
@@ -86,6 +93,12 @@ const time = computed(() => {
     width: 29px;
     text-align: center;
     text-shadow: 0 1px 3px black;
+  }
+
+  &--finished {
+    .time__char {
+      color: rgba(whitesmoke, 0.65);
+    }
   }
 }
 </style>

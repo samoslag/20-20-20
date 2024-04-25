@@ -1,5 +1,11 @@
 <template>
-  <div class="ring">
+  <div
+    class="ring"
+    :class="{
+      'ring--hidden': props.isHidden,
+      'ring--faded': props.isFaded
+    }"
+  >
     <div class="ring__progress" :style="`--progress: ${props.progress}%`">
       <div class="ring__outer">
         <div class="ring__inner">
@@ -15,6 +21,8 @@ import { defineProps } from 'vue'
 
 export interface Props {
   progress: number
+  isHidden?: boolean
+  isFaded?: boolean
 }
 
 const props = defineProps<Props>()
@@ -49,6 +57,14 @@ const props = defineProps<Props>()
     height: calc(100% - #{$offset * 2});
     background: conic-gradient($gradient);
     border-radius: 50%;
+    animation: ring-appear 0.15s ease-out;
+    transition: opacity 0.15s;
+
+    @keyframes ring-appear {
+      from {
+          opacity: 0;
+      }
+    }
   }
 
   &::after {
@@ -97,6 +113,19 @@ const props = defineProps<Props>()
       inset 0 2px 0 rgba(white, 0.04),
       0 2px 0 rgba(white, 0.04);
     background: lighten($bg, 1.25%);
+  }
+
+  &--hidden {
+    &::before {
+      display: none;
+    }
+  }
+
+  &--faded {
+    &::before {
+      background: gray;
+      opacity: 0.6;
+    }
   }
 }
 </style>
