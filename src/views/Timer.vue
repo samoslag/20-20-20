@@ -70,13 +70,19 @@ const {
   updateInterval: 1000
 })
 
-const startTimer = () => {
+let isSoundApproved = false
+const approveSound = () => {
+  isSoundApproved = true
+
   // mark our audio element as approved by the user
   audio.play().then(() => { // pause directly
     audio.pause()
     audio.currentTime = 0
   })
+}
 
+const startTimer = () => {
+  if (!isSoundApproved) approveSound()
   start()
 }
 
@@ -125,6 +131,9 @@ onFinish(() => {
 
   if (stage.value === 'first') {
     setSecondTimer()
+  } else if (stage.value === 'second') {
+    setFirstTimer()
+    startTimer()
   }
 })
 
