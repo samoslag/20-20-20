@@ -1,24 +1,19 @@
-# 20-20-20
+<div align="center">
+  <h1>20-20-20 Timer</h1>
 
-## Project setup
+  ### [Live version here](https://samoslag.github.io/20-20-20/)
+  
+  <img src="https://github.com/samoslag/20-20-20/blob/main/Screenshot.png" alt="Screenshot" />
+</div>
+
+### Setup
 ```
+# Install dependencies
 yarn install
-```
 
-### Compiles and hot-reloads for development
-```
+# Run in development mode
 yarn serve
-```
 
-### Compiles and minifies for production
-```
+# Build for production
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
