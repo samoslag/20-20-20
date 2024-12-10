@@ -6,7 +6,7 @@
       'ring--faded': props.isFaded
     }"
   >
-    <div class="ring__progress" :style="`--progress: ${props.progress}%`">
+    <div class="ring__progress" :style="`--progress: ${100 - props.progress}%`">
       <div class="ring__outer">
         <div class="ring__inner">
           <slot/>
@@ -81,7 +81,7 @@ const props = defineProps<Props>()
 
   .ring__progress {
     z-index: 2;
-    background: conic-gradient(transparent var(--progress), black var(--progress));
+    background: conic-gradient(black var(--progress), transparent var(--progress));
     padding: $stroke + $offset * 2;
     width: 100%;
     height: 100%;
